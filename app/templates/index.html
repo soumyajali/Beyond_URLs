@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishingSense | Context-Aware Deep Learning</title>
+    <meta name="description" content="Detect financially deceptive phishing attacks purely through semantic context using DistilBERT and XAI.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <div class="background-mesh"></div>
+    
+    <main class="container">
+        <header class="glass-header">
+            <div class="logo">
+                <i data-feather="shield"></i>
+                <h1>PhishingSense</h1>
+            </div>
+            <p class="subtitle">Context-Aware AI for Financial Deception Detection</p>
+        </header>
+
+        <section class="glass-panel main-panel">
+            <div class="input-group">
+                <label for="messageInput">Analyze Message or Email Text</label>
+                <textarea id="messageInput" placeholder="Paste the suspicious text here... (URLs will be ignored)"></textarea>
+                <div class="button-group">
+                    <button id="analyzeBtn" class="primary-btn">
+                        <i data-feather="cpu"></i> Analyze Context
+                    </button>
+                    <button id="demoBtn" class="secondary-btn">
+                        Load Demo Text
+                    </button>
+                </div>
+            </div>
+
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+                <p>Running DistilBERT & SHAP Explainer...</p>
+            </div>
+
+            <div id="results" class="results-panel hidden">
+                <div class="result-header">
+                    <h2>Analysis Results</h2>
+                    <span id="predictionBadge" class="badge"></span>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <p class="stat-label">Confidence</p>
+                        <p id="confidenceScore" class="stat-value">--%</p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-label">Analyzed Length</p>
+                        <p id="textLength" class="stat-value">-- chars</p>
+                    </div>
+                </div>
+                
+                <div class="xai-section">
+                    <h3>Probabilities</h3>
+                    <div class="prob-bars" id="probBars">
+                        <!-- Bars injected by JS -->
+                    </div>
+                </div>
+
+                <div class="xai-section">
+                    <h3>Detected Indicators</h3>
+                    <ul id="indicatorsList" class="indicators-list">
+                        <!-- Indicators injected by JS -->
+                    </ul>
+                </div>
+                
+                <div class="xai-section">
+                    <h3>AI Explanation</h3>
+                    <div class="explanation-box" id="aiExplanation">
+                        <!-- Explanation injected by JS -->
+                    </div>
+                </div>
+
+                <div class="xai-section">
+                    <h3>SHAP Attribution (Token Focus)</h3>
+                    <p class="xai-desc">Meaningful words that influenced the AI model:</p>
+                    <div id="xaiTags" class="tags-container">
+                        <!-- Tags injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Developed for VTU Engineering Project | AIET Moodbidri</p>
+        </footer>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>
