@@ -1,2 +1,20 @@
+[project]
+name = "beyond-urls"
+version = "0.1.0"
+description = "Financial Phishing Detection API"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0.0",
+    "transformers>=4.30.0",
+    "flask>=2.3.0",
+    "scikit-learn>=1.2.0",
+    "shap>=0.42.0",
+    "lime>=0.2.0",
+    "nltk>=3.8.1",
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "gunicorn>=20.1.0"
+]
+
 [tool.vercel]
 entrypoint = "app.api:app"
